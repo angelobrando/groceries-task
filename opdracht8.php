@@ -10,7 +10,7 @@
         </form> 
     <ol style="list-style-type:disc;">
         <?php   session_start();
-        $db = new SQLite3('boodschappen_opdracht7.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
+        $db = new SQLite3('boodschappen_opdracht8.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
         try {
             //var_dump($_POST['index']);
             if (isset($_GET['index'])) {
