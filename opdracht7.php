@@ -18,9 +18,17 @@
                 $db->exec('INSERT INTO "product" ("omschrijving")VALUES("'.$groceries.'")');
                 $db->exec('COMMIT');
                 }
-        } catch(PDOException $e) {
+            $i = 0;
+            $results = $db->query('SELECT omschrijving FROM product');
+                while ($row = $results->fetchArray()) {
+                    echo "<a href=?index=$i><li id=" .$i. ">".$row[$i]."</li>";
+                }
+        } 
+        catch(PDOException $e) {
             echo $e->getMessage();
         }
+        
+        
         ?>
     </ol>
     </body>
