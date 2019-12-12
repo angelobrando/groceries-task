@@ -19,10 +19,18 @@
                 min="2018-01-01" max="2019-12-31">
                 <input type="submit" name="date" value="check it">
             </form> 
+            <?php if ($_POST['dol']){
+                            $datos = $_POST['dol'];
+                        }
+                        else {
+                            $datos = date('Y-m-d');
+                        } 
+                        echo("Boodschappen van "); echo($datos) ?>
             <ol style="list-style-type:disc;">
                 <?php   session_start();
                 $db = new SQLite3('boodschappen_opdracht9.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
                 try {
+
                     //var_dump($_POST['index']);
                     if (isset($_GET['index'])) {
                         $prop = $_GET['index']; 
@@ -42,12 +50,12 @@
                         else {
                             $datos = date('Y-m-d');
                         }
-                        $i = 0;
-                    $indo = 1;
-                    $db->exec('BEGIN');
-                    $item = $db->query('SELECT omschrijving FROM product WHERE "date"="'.$datos.'"');
-                    $nid = $db->query('SELECT idproduct FROM product WHERE "date"="'.$datos.'"');
-                    $db->exec('COMMIT');
+                            $i = 0;
+                        $indo = 1;
+                        $db->exec('BEGIN');
+                        $item = $db->query('SELECT omschrijving FROM product WHERE "date"="'.$datos.'"');
+                        $nid = $db->query('SELECT idproduct FROM product WHERE "date"="'.$datos.'"');
+                        $db->exec('COMMIT');
 
                         while ($row = $item->fetchArray()) {
                             $row1 = $nid->fetchArray();
